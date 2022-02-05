@@ -1,9 +1,11 @@
 import React from "react";
 
+import BidFormHome from "./components/bidForm/bidFormHome";
+
 function App() {
   return (
     <div>
-      <h1>Home</h1>
+      <BidFormHome />
     </div>
   );
 }
