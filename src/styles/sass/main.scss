@@ -1,0 +1,193 @@
+@import './reset';
+@import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', Courier, monospace;
+}
+
+.text1 {
+  font-size: 14px;
+  color: #9299a1;
+}
+
+.text2 {
+  font-size: 18px;
+  color: #0f0f0f;
+  font-weight: 600;
+}
+
+.text3 {
+  font-size: 36px;
+  color: #0f0f0f;
+  font-weight: 600;
+}
+
+.text4 {
+  font-size: 18px;
+  color: #4a4848;
+  font-weight: 400;
+}
+
+.divider {
+  border-top: 1px solid #dfeaf5;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  color: #3a53f2;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.fa-pencil-alt {
+  color: #3a53f2;
+  padding: 5px;
+}
+
+.otp-message-container {
+  display: flex;
+  width: 460px;
+}
+
+.otp-container {
+  margin: 30px 0px;
+}
+
+.otp-field {
+  padding-left: 5px;
+  letter-spacing: 46px;
+  border: 0;
+  background-image: linear-gradient(
+    to left,
+    black 70%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  background-size: 80px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 40px;
+  width: 300px;
+  outline: none;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.logo-container {
+  padding: 20px 0px;
+  padding-left: 35px;
+  .logo {
+    height: 45px;
+  }
+}
+
+.header-container {
+  height: 150px;
+  width: '100%';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f;
+  .header {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 600;
+  }
+}
+
+.bid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bid-price-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  padding: 50px;
+  .ruppe-symbol {
+    font-size: 45px;
+    font-weight: 600;
+  }
+  .bid-price {
+    text-decoration: none;
+    font-size: 45px;
+    font-weight: 600;
+    border: none;
+    width: 150px;
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.whatsapp-update-container {
+  width: 495px;
+  margin-top: -15px;
+  margin-left: 5px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  .whatsapp-label {
+    margin-left: 5px;
+    .whatsapp-green {
+      color: green;
+    }
+  }
+}
+
+.details-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.div-center {
+  width: 550px;
+  padding: 15px;
+}
+
+@media (max-width: $mobile-width) {
+  .div-center-container {
+    width: '100%';
+  }
+  .header-container {
+    height: 130px;
+    width: '100%';
+    padding: 15px;
+    .header {
+      font-size: 26px;
+    }
+  }
+  .logo-container {
+    padding: 10px 0px;
+    padding-left: 25px;
+    .logo {
+      height: 35px;
+    }
+  }
+  .bid-price-container {
+    .bid-price {
+      width: 120px;
+    }
+  }
+  .whatsapp-update-container {
+    width: 400px;
+  }
+  .otp-message-container {
+    width: 380px;
+  }
+}

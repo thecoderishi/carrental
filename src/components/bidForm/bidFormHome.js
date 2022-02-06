@@ -5,10 +5,12 @@ import TravelDetails from './travelDetails';
 import BidDetails from './bidDetails';
 import OTPVerification from './otpVerification';
 import SummaryBid from './summaryBid';
-
+import Logo from '../../images/logo.png'
 export default function BidFormHome() {
 
   const [currentStep, setCurrentStep] = useState(0);
+
+  const checkPhone = /^[0-9]{10}$/
 
   const formik = useFormik({
     initialValues: {
@@ -35,7 +37,7 @@ export default function BidFormHome() {
       }),
       bidPrice: Yup.number().required('Bid price is required'),
       customerPhoneNumber: Yup.string()
-        .max(9999999999)
+        .matches(checkPhone, 'Number should be of 10 digit')
         .required('Mobile number is required'),
       customerName: Yup.string().required('Name is required'),
       remarks: Yup.string(),
@@ -51,20 +53,26 @@ export default function BidFormHome() {
     setCurrentStep(step)
   }
 
-  return <div>
-    <div>
-      <h1>
+  return <div style={{ width: '100%' }}>
+    <div className='logo-container'>
+      <img className='logo' src={Logo} alt="logo" />
+    </div>
+    <div className='header-container'>
+      <p className='header'>
         {(currentStep === 0 || currentStep === 1) && `Place your Bid (${currentStep + 1}/4 step)`}
         {currentStep === 2 && `Verify OTP (${currentStep + 1}/4 step)`}
         {currentStep === 3 && `Summary and Submit Bid (${currentStep + 1}/4 step)`}
-      </h1>
+      </p>
     </div>
-    <form action="">
-      {currentStep === 0 && <TravelDetails formik={formik} handleNextStep={handleNextStep} />}
-      {currentStep === 1 && <BidDetails formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
-      {currentStep === 2 && <OTPVerification formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
-      {currentStep === 3 && <SummaryBid formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
-      {/* <button type="submit">submit</button> */}
-    </form>
+    <div className='div-center-container'>
+      <div className='div-center'>
+        <form action="">
+          {currentStep === 0 && <TravelDetails formik={formik} handleNextStep={handleNextStep} />}
+          {currentStep === 1 && <BidDetails formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
+          {currentStep === 2 && <OTPVerification formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
+          {currentStep === 3 && <SummaryBid formik={formik} handleNextStep={handleNextStep} handleJumpStep={handleJumpStep} />}
+        </form>
+      </div>
+    </div>
   </div>;
 }

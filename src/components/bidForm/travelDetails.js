@@ -1,34 +1,42 @@
 import React from 'react';
-
+import CustomInputField from '../UI/customInputField/customInputField';
+import CustomSelectField from '../UI/customSelectField/customSelectField';
+import CustomButton from '../UI/customButton/customButton';
 
 export default function TravelDetails({ formik, handleNextStep }) {
 
   const { values, handleChange, errors, handleBlur, touched } = formik
 
   return <div>
-    <input
-      type="text"
-      id='source'
-      name='source'
-      placeholder='source'
-      value={values.source}
-      onChange={handleChange}
-      onBlur={handleBlur}
-    />
-    {(errors.source && touched.source) ? <p>{errors.source}</p> : null}
-    <input
-      type="text"
-      id='destination'
-      name='destination'
-      placeholder='destination'
-      value={values.destination}
-      onChange={handleChange}
-      onBlur={handleBlur}
-    />
-    {(errors.destination && touched.destination) ? <p>{errors.destination}</p> : null}
-    <select
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <CustomInputField
+        type="text"
+        id='source'
+        name='source'
+        label='source*'
+        placeholder=' '
+        helperText={(errors.source && touched.source) && errors.source}
+        value={values.source}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <CustomInputField
+        type="text"
+        id='destination'
+        name='destination'
+        label='destination*'
+        placeholder=' '
+        helperText={(errors.destination && touched.destination) && errors.destination}
+        value={values.destination}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+    </div>
+    <CustomSelectField
       name="carType"
       id="carType"
+      size='large'
+      helperText={(errors.carType && touched.carType) && errors.carType}
       value={values.carType}
       onBlur={handleBlur}
       onChange={handleChange}
@@ -37,20 +45,27 @@ export default function TravelDetails({ formik, handleNextStep }) {
       <option value="SUV">SUV</option>
       <option value="Sedan">Sedan</option>
       <option value="HatchBack">HatchBack</option>
-    </select>
-    {(errors.carType && touched.carType) ? <p>{errors.carType}</p> : null}
-    <input
-      type="number"
+    </CustomSelectField>
+    <CustomInputField
+      type="text"
       id='numOfTravellers'
       name='numOfTravellers'
-      placeholder='Number Of Travellers'
+      label='Number Of Travellers'
+      placeholder=' '
+      size='large'
+      helperText={(errors.numOfTravellers && touched.numOfTravellers) && errors.numOfTravellers}
       value={values.numOfTravellers}
       onChange={handleChange}
       onBlur={handleBlur}
     />
-    {(errors.numOfTravellers && touched.numOfTravellers) ? <p>{errors.numOfTravellers}</p> : null}
-    <button onClick={handleNextStep}>
+    <CustomButton
+      disabled={
+        (values.destination === '' || values.source === '' || values.carType === '' || values.numOfTravellers === '') ||
+        (errors.destination || errors.source || errors.carType || errors.numOfTravellers)
+      }
+      onClick={handleNextStep}
+    >
       Enter bid details
-    </button>
+    </CustomButton>
   </div>;
 }

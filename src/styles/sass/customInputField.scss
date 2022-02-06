@@ -1,0 +1,100 @@
+.input-container {
+  display: flex;
+  position: relative;
+  height: 75px;
+  width: 240px;
+  padding-left: 5px;
+  margin-right: 10px;
+  align-items: center;
+  &-small {
+    width: 240px;
+  }
+  &-large {
+    width: 500px;
+  }
+  &-helper {
+    height: 90px;
+  }
+}
+
+.input {
+  height: 45px;
+  width: inherit;
+  font-size: 14px;
+  padding-left: 10px;
+  border-style: solid;
+  border-color: #c2c2c2;
+  background-color: white;
+  border-width: 0.5px;
+  float: left;
+  transition: border-color 0.3s;
+  &:hover {
+    border-color: black;
+  }
+  &:focus {
+    padding-left: 10px;
+    border-width: 1px;
+    border-color: #000000;
+    outline: none;
+    & + .label {
+      top: 2px;
+      left: 10px;
+      font-size: 12px;
+      color: #000000;
+      background-color: white;
+      padding-left: 5px;
+      padding-right: 5px;
+      &-helper {
+        top: 15px;
+      }
+    }
+  }
+  &:not(:placeholder-shown) {
+    & + .label {
+      top: 2px;
+      left: 10px;
+      font-size: 12px;
+      background-color: white;
+      padding-left: 5px;
+      padding-right: 5px;
+      &-helper {
+        top: 15px;
+      }
+    }
+  }
+}
+
+.label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 27px;
+  font-size: 14px;
+  color: #666666;
+  transition: all 0.3s;
+  &-helper {
+    top: 40px;
+  }
+}
+
+.helper-text {
+  position: absolute;
+  top: 65px;
+  margin-top: 5px;
+  color: red;
+}
+
+@media (max-width: 480px) {
+  .input-container {
+    width: 180px;
+    &-small {
+      width: 180px;
+    }
+    &-large {
+      width: 400px;
+    }
+  }
+  .helper-text {
+    font-size: 12px;
+  }
+}
