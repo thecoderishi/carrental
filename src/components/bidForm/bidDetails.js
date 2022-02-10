@@ -6,6 +6,15 @@ export default function BidDetails({ formik, handleNextStep, handleJumpStep }) {
 
   const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
+  const handleNext = () => {
+    console.log(values.isLogedin);
+    if (values.isLogedin) {
+      handleJumpStep(3)
+    } else {
+      setIsDetailsVisible(true)
+    }
+  }
+
   return <div>
     <div className='details-wrapper'>
       <div >
@@ -48,7 +57,7 @@ export default function BidDetails({ formik, handleNextStep, handleJumpStep }) {
         <label for="vehicle1"> Rate Negotiable</label>
       </div>
     </div>
-    {!isDetailsVisible && <CustomButton disabled={values.bidPrice === ''} onClick={() => setIsDetailsVisible(true)} >Next</CustomButton>}
+    {!isDetailsVisible && <CustomButton disabled={values.bidPrice === ''} onClick={() => handleNext()} >Next</CustomButton>}
 
     {isDetailsVisible && <>
       <CustomInputField

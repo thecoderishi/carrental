@@ -7,6 +7,7 @@ export default function OTPVerification({ formik, handleNextStep, handleJumpStep
   useEffect(() => {
     if (values.otp.toString().length === 4 && values.otp.toString() === '1234') {
       handleNextStep()
+      formik.setFieldValue(values.isLogedin, true, false)
     }
   }, [values.otp]);
 

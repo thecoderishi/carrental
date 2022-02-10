@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import TravelDetails from './travelDetails';
@@ -25,6 +25,7 @@ export default function BidFormHome() {
       customerName: '',
       remarks: '',
       otp: '',
+      isLogedin: false
     },
     validationSchema: Yup.object({
       source: Yup.string().required('Source is required'),
@@ -44,6 +45,12 @@ export default function BidFormHome() {
       otp: Yup.number().required('OTP is required')
     })
   })
+
+  useEffect(() => {
+    if (localStorage.getItem('isLogedIn') !== null && Boolean(localStorage.getItem('isLogedIn')) === true) {
+      formik.setFieldValue('isLogedin', true)
+    }
+  }, [])
 
   const handleNextStep = () => {
     setCurrentStep(currentStep + 1)
